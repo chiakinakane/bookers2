@@ -1,7 +1,8 @@
-<tr>
-
-<h2>User info</h2>
-<% if @user.errors.any? %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
+     <% if @user.errors.any? %>
   <%= @user.errors.count %>error prohibited this obj from being saved:
   <ul>
     <% @user.errors.full_messages.each do |message| %>
@@ -9,17 +10,6 @@
     <% end %>
   </ul>
 <% end %>
-
-
-<% if @user.id == current_user.id %>
-   <%= link_to edit_user_path(current_user.id) do %>
-    <div class= " edit btn btn-outline-secondary btn-default btn-block" ><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></div>
-   <% end %>
-<% end %>
-
-
-
-
 
    <%= form_with model: @user, method: :patch do |f| %>
   <label for="inputName">Name</label><br>
@@ -30,10 +20,10 @@
    <%= f.text_area :introduction %>
   </br>
   <td>
-    <%= f.submit "Update user", class: "btn btn-secondary" %>
+    <%= f.submit "Update User", class: "btn btn-secondary" %>
     <%#link_to⇨飛ぶだけ〜。f.submit→情報持って飛ぶよ〜%>
   </td>
-</tr>
-  
-  
 <% end %>
+</div>
+</div>
+</div>

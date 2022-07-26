@@ -1,47 +1,33 @@
 <div class="text-success">
-  <%= flash[:notice] %>　
+  <%= flash[:notice] %>
 </div>
-<h2>Editing Book</h2>
- <table class="table">
-    <tbody>
-<tr>
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this obj from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-
-
-<% if @book.user_id == current_user.id %>
-  <td><%= link_to "編集", example_path %></td>
-  <td><%= link_to "削除", example_path, method: :delete, data: {confirm: "Are you sure？"} %></td>
-<% end %>
-
-
-
-
-<%= form_with model: @book do |f| %>
-
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-  <br>
-  <%= f.submit "Update Book", class: "btn btn-success" %>
-  
-<% end %>
-</tr>
-</tbody>
-</table>
-
-
-<p>
-<%= link_to "Show", book_path %>
-|
-<%= link_to "Back", books_path %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+     <h1>Editing Book</h1>
+      <% if @book.errors.any? %>
+      <%= @book.errors.count %>errors prohibited this obj from being saved:
+       <ul>
+         <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+         <% end %>
+        </ul>
+      <% end %>
+      <%= form_with model: @book,local: true do |f| %>
+      <table>
+       <h4>Title</h4>
+        <%= f.text_field :title %>
+       <h4>Opinion</h4>
+        <%= f.text_area :body %>
+      </table>
+       <br>
+         <%= f.submit "Update Book", class: "btn btn-success" %>
+         <% end %>
+         <p>
+          <%= link_to "Show", book_path %>
+           |
+          <%= link_to "Back", books_path %>
+         </p>
+    </div>
+  </div>
+</div>

@@ -9,46 +9,37 @@
   </ul>
 <% end %>
 
-
-
-
  <table class="table">
     <tbody>
      <tr>
       <div class="profile-container">
        <%= image_tag user.get_profile_image(100,100) %>
-       <% user.id == current_user.id %>
      </tr>
-     
     <tr>
      <th>name</th>
-      <th><h5 class="profile-name"><%= user.name %></h5></th>
-    </tr>
-       
-    <tr>
-      <th>introduction</th>
-      <th><h5 class="profile-name"><%= user.introduction %></h5></th>
+      <th class="profile-name"><%= user.name %></th>
     </tr>
     <tr>
-     <%= link_to  edit_user_path(user.id ), class:"btn btn-outline-secondary btn-block " do %> 
-      <i class="fas fa-user-cog"></i>
-     <% end %>
+     <th>introduction</th>
+     <th class="profile-name"><%= user.introduction %></th>
     </tr>
-</div>
+    </div>
 </tbody>
 </table>
-
-
-
+      <div class="row">
+       <%= link_to edit_user_path(user.id ), class:"btn btn-outline-secondary btn-block " do %> 
+         <i class="fas fa-user-cog"></i>
+       <% end %>
+      </div>
 <h2 class="mt-3">New book</h2>
-<%= form_with model: book do |f| %>
- <h4>title</h4>
- <%= f.text_field :title, class:"form-control" %><%#railsのタグにクラスをつkるhtmlのcssを自動でつけてくれるブートストラップに用意されていれば
+  <%= form_with model: book do |f| %>
+   <h4>title</h4>
+    <%= f.text_field :title, class:"form-control" %><%#railsのタグにクラスをつkるhtmlのcssを自動でつけてくれるブートストラップに用意されていれば
  %>
- <h4>Opinion</h4>
- <%= f.text_area :body, class:"form-control" %>
-  </br>
-  <td>
-    <%= f.submit "Create Book", class: "btn btn-success" %>
-  </td>
+   <h4>Opinion</h4>
+    <%= f.text_area :body, class:"form-control" %>
+   <br>
+   <td>
+   <%= f.submit "Create Book", class: "btn btn-success" %>
+   </td>
 <% end %>
